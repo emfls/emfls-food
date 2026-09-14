@@ -49,3 +49,10 @@
 - No real operating contact channel is configured; Contact intentionally does not show an invented email address.
 - GA4 Measurement ID and AdSense publisher ID were not provided and must not be fabricated.
 - Existing production dependency audit has 1 low, 1 high, and 1 critical issue requiring an Astro major upgrade; review separately before launch and do not use `npm audit fix --force` blindly.
+
+## 2026-09-15 production QA
+
+- `https://food.emfls.com/` DNS lookup failed with `Could not resolve host`; no HTTP response or TLS certificate could be inspected.
+- Because the custom domain did not resolve, Cloudflare Pages project identity, GitHub connection, production branch, latest deployment result, and `pages.dev` mapping could not be verified from this environment.
+- Production Route smoke tests, browser rendering, Recipe Scaling, Cooking Converter, swap behavior, invalid-input handling, headers/footers, CSS, internal links, canonical tags, sitemap, and robots were not reported as passed. Local artifact checks remain separate and are not a substitute for production QA.
+- No source or configuration changes were made during this QA attempt.

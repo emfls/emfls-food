@@ -274,6 +274,24 @@
 - Set a real contact channel before public launch.
 - Review the known Astro/esbuild/sharp audit findings before production deployment; no major upgrade or `npm audit fix --force` was applied.
 
+## 2026-09-15 — P1-H Production QA attempt
+
+### Scope
+
+- Audited only the current `emfls-food` repository and its declared production domain `food.emfls.com`.
+- No new feature, content, dependency, Cloudflare configuration, or source change was made.
+
+### Actual production result
+
+- `curl -I -L https://food.emfls.com/` failed with `Could not resolve host: food.emfls.com`.
+- DNS resolution failed before HTTP or TLS negotiation, so HTTP 200, certificate, Cloudflare serving headers, redirects, trailing slash behavior, route responses, browser rendering, interactive features, and production SEO could not be verified.
+- Cloudflare Pages project identity, repository connection, production branch, latest deployment, build settings, output directory, and `pages.dev` relationship were not accessible from this session and were not assumed.
+
+### QA status
+
+- Status remains `BLOCKED`, not `LIVE`.
+- The production checklist intentionally remains incomplete. Local build and artifact checks documented earlier are not treated as production evidence.
+
 ## 2026-09-14 — P1-C Recipe Scaling
 
 ### 구현 내용

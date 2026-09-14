@@ -21,7 +21,7 @@
 - [x] P1-E Launch Readiness QA
 - [x] P1-F 이미지 운영 체계 구축
 - [x] P1-G AdSense / Production Launch Preparation
-- [ ] P1-H Production Deployment — BLOCKED: external Cloudflare project access and DNS/HTTPS configuration required
+- [ ] P1-H Production Deployment — BLOCKED: `food.emfls.com` DNS did not resolve during production QA; Cloudflare project/deployment access and DNS/HTTPS configuration still require external verification
 - [x] 콘텐츠 간 Recipe ↔ Knowledge 관련 링크 보강
 
 ## P2 — 미완료
