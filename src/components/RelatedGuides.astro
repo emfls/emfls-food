@@ -1,0 +1,8 @@
+---
+import GuideCard from './GuideCard.astro';
+import { contentHref } from '../lib/related';
+import type { CollectionEntry } from 'astro:content';
+interface Props { entries: Array<CollectionEntry<'recipes'> | CollectionEntry<'knowledge'>>; }
+const { entries } = Astro.props;
+---
+{entries.length > 0 && <section class="related-section"><div class="section-heading"><div><p class="eyebrow">Keep exploring</p><h2>이어서 읽기</h2></div></div><div class="guide-grid">{entries.map((entry) => <GuideCard href={contentHref(entry)} category={entry.data.category} title={entry.data.title} description={entry.data.description} />)}</div></section>}

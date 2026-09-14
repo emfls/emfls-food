@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import { relatedEntries } from '../../lib/related';
+export async function getStaticPaths() { const entries = await getCollection('recipes'); const all = [...entries, ...(await getCollection('knowledge'))]; return entries.map((entry) => ({ params: { slug: entry.id.replace(/\.md$/, '') }, props: { entry, related: relatedEntries(entry, all) } })); }
+const { entry, related } = Astro.props; const { Content } = await render(entry); const recipe = entry.data;
+---
+<ArticleLayout title={recipe.title} description={recipe.description} category={recipe.category} updatedAt={recipe.updatedAt} collection="recipes" image={recipe.image} recipe={recipe}>
+  <div class="tag-list" aria-label="태그">{recipe.tags.map((tag) => <span>#{tag}</span>)}</div>
+  <Content />
+  <section class="recipe-section ingredients-section"><div class="section-heading"><div><p class="eyebrow">Ingredients</p><h2>재료</h2></div><div class="scaling-control" data-recipe-scaling data-base-servings={recipe.servings}><span class="scaling-label">기준 {recipe.servings}인분</span><div class="serving-options" role="group" aria-label="인분 선택">{[1, 2, 3, 4, 5, 6].map((serving) => <button type="button" data-serving={serving} aria-pressed={serving === recipe.servings}>{serving}인분</button>)}</div></div></div><ul class="ingredient-list">{recipe.ingredients.map((item) => <li><span>{item.item}</span><strong data-ingredient-amount data-amount={item.amount} data-unit={item.unit ?? ''}>{typeof item.amount === 'number' ? item.amount : item.amount}{item.unit ? ` ${item.unit}` : ''}{item.note ? `, ${item.note}` : ''}</strong></li>)}</ul></section>
+  <section class="recipe-section"><h2>조리 순서</h2><ol class="method-list">{recipe.method.map((step) => <li><h3>{step.title}</h3><p>{step.instruction}</p>{step.point && <p class="step-point"><strong>포인트</strong> {step.point}</p>}</li>)}</ol></section>
+  <section class="recipe-section"><h2>왜 이렇게 할까요?</h2><p>{recipe.cookingReason}</p></section>
+  <div class="article-columns"><section class="recipe-section"><h2>대체 재료</h2><ul>{recipe.substitutions.map((item) => <li>{item}</li>)}</ul></section><section class="recipe-section"><h2>보관과 데우기</h2><p>{recipe.storage}</p>{recipe.reheating && <p>{recipe.reheating}</p>}</section></div>
+  <section class="recipe-section"><h2>실패하기 쉬운 부분</h2><ul>{recipe.failures.map((item) => <li>{item}</li>)}</ul><h3>작은 팁</h3><ul>{recipe.tips.map((item) => <li>{item}</li>)}</ul></section>
+  <RelatedGuides entries={related} />
+</ArticleLayout>
+<script>
+  import { formatAmount } from '../../lib/recipeScaling';
+  document.querySelectorAll('[data-recipe-scaling]').forEach((control) => {
+    const base = Number(control.getAttribute('data-base-servings'));
+    const buttons = control.querySelectorAll('[data-serving]');
+    const amounts = control.closest('.ingredients-section')?.querySelectorAll('[data-ingredient-amount]') ?? [];
+    buttons.forEach((button) => button.addEventListener('click', () => {
+      const serving = Number(button.getAttribute('data-serving'));
+      if (!Number.isFinite(serving) || serving <= 0 || serving > 12) return;
+      buttons.forEach((option) => option.setAttribute('aria-pressed', String(option === button)));
+      amounts.forEach((element) => {
+        const raw = element.getAttribute('data-amount') ?? '';
+        const amount = Number(raw);
+        const value = raw.trim() !== '' && Number.isFinite(amount) ? formatAmount(amount, base, serving) : formatAmount(raw, base, serving);
+        element.textContent = `${value}${element.getAttribute('data-unit') ? ` ${element.getAttribute('data-unit')}` : ''}`;
+      });
+    }));
+  });
+</script>

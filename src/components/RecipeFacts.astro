@@ -1,0 +1,5 @@
+---
+interface Props { servings: number; prepTime: string; cookTime: string; totalTime: string; }
+const { servings, prepTime, cookTime, totalTime } = Astro.props;
+---
+<dl class="recipe-facts"><div><dt>분량</dt><dd>{servings}인분</dd></div><div><dt>준비</dt><dd>{prepTime}</dd></div><div><dt>조리</dt><dd>{cookTime}</dd></div><div><dt>총 시간</dt><dd>{totalTime}</dd></div></dl>

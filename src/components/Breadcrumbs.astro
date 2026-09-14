@@ -1,0 +1,6 @@
+---
+interface Props { category: string; title: string; collection: string; }
+const { category, title, collection } = Astro.props;
+const label = collection === 'recipes' ? '레시피' : '음식 지식';
+---
+<nav class="breadcrumbs" aria-label="현재 위치"><a href="/">홈</a><span aria-hidden="true">/</span><a href="/categories/">{label}</a><span aria-hidden="true">/</span><a href={`/categories/#${category}`}>{category}</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span></nav>

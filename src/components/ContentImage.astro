@@ -1,0 +1,5 @@
+---
+interface Props { image: { src: string; alt: string }; variant?: 'hero' | 'card' | 'step'; loading?: 'lazy' | 'eager'; }
+const { image, variant = 'hero', loading = variant === 'hero' ? 'eager' : 'lazy' } = Astro.props;
+---
+<figure class={`content-image content-image--${variant}`}><img src={image.src} alt={image.alt} loading={loading} decoding="async" /><figcaption class="sr-only">{image.alt}</figcaption></figure>

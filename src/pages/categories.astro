@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GuideCard from '../components/GuideCard.astro';
+const recipes = await getCollection('recipes'); const knowledge = await getCollection('knowledge');
+const categories = ['밥', '고기', '채소', '해산물', '면', '간식', '조리법', '식재료', '보관법', '주방도구'];
+---
+<BaseLayout title="카테고리 | emfls food" description="emfls food의 음식·요리 가이드를 주제별로 찾아보세요.">
+  <div class="page-shell"><p class="eyebrow">Browse the table</p><h1>카테고리</h1><div class="category-list">{categories.map((category) => <a id={category} href={`#${category}`}>{category}</a>)}</div><div class="guide-grid" style="margin-top:3rem">{recipes.map((entry) => <GuideCard href={`/recipes/${entry.id.replace(/\.md$/, '')}/`} category={entry.data.category} title={entry.data.title} description={entry.data.description} image={entry.data.image} />)}{knowledge.map((entry) => <GuideCard href={`/knowledge/${entry.id.replace(/\.md$/, '')}/`} category={entry.data.category} title={entry.data.title} description={entry.data.description} image={entry.data.image} />)}</div></div>
+</BaseLayout>

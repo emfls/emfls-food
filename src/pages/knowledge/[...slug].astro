@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import { relatedEntries } from '../../lib/related';
+export async function getStaticPaths() { const entries = await getCollection('knowledge'); const all = [...entries, ...(await getCollection('recipes'))]; return entries.map((entry) => ({ params: { slug: entry.id.replace(/\.md$/, '') }, props: { entry, related: relatedEntries(entry, all) } })); }
+const { entry, related } = Astro.props; const { Content } = await render(entry); const knowledge = entry.data;
+---
+<ArticleLayout title={knowledge.title} description={knowledge.description} category={knowledge.category} updatedAt={knowledge.updatedAt} collection="knowledge" image={knowledge.image}>
+  <div class="knowledge-summary"><p class="eyebrow">한눈에 답하기</p><p>{knowledge.summary}</p></div>
+  {knowledge.whenUseful && <section class="knowledge-section"><h2>이럴 때 필요한 정보</h2><p>{knowledge.whenUseful}</p></section>}
+  <Content />
+  {knowledge.principles.length > 0 && <section class="knowledge-section"><h2>핵심 원칙</h2>{knowledge.principles.map((item) => <div class="principle"><h3>{item.title}</h3><p>{item.explanation}</p></div>)}</section>}
+  {knowledge.steps.length > 0 && <section class="knowledge-section"><h2>단계별 방법</h2><ol class="method-list">{knowledge.steps.map((step) => <li><h3>{step.title}</h3><p>{step.instruction}</p></li>)}</ol></section>}
+  {knowledge.storage && <section class="knowledge-section"><h2>보관 기준</h2><p>{knowledge.storage}</p></section>}
+  {knowledge.cautions.length > 0 && <section class="knowledge-section"><h2>주의할 점</h2><ul>{knowledge.cautions.map((item) => <li>{item}</li>)}</ul></section>}
+  {knowledge.commonMistakes.length > 0 && <section class="knowledge-section"><h2>흔한 실수</h2><ul>{knowledge.commonMistakes.map((item) => <li>{item}</li>)}</ul></section>}
+  {knowledge.variations.length > 0 && <section class="knowledge-section"><h2>상황별 차이</h2>{knowledge.variations.map((item) => <div class="principle"><h3>{item.title}</h3><p>{item.explanation}</p></div>)}</section>}
+  <RelatedGuides entries={related} />
+</ArticleLayout>
