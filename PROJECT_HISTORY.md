@@ -242,14 +242,20 @@
 
 - Current branch: `main`
 - Repository remote: `https://github.com/emfls/emfls-food.git`
-- Working tree contains the project files as uncommitted initial repository content; no history rewrite, reset, force push, or automatic commit was performed.
+- Initial project content was committed normally in `8a18a3c` (`chore: prepare emfls-food for production deployment`) and pushed to `origin/main`. No history rewrite, reset, or force push was used.
 - `package-lock.json` lockfileVersion is 3. Build configuration is Astro static with `npm run build` and `dist` output.
 
 ### Deployment status
 
 - Cloudflare Pages project lookup, GitHub connection, DNS, HTTPS certificate, and deployment were not performed because no Cloudflare/GitHub deployment connector or credentials are available in this session.
 - `https://food.emfls.com/` could not be resolved from the current environment, so the site is not reported as LIVE.
-- Status: READY FOR EXTERNAL SETUP, with external deployment blockers documented in `LAUNCH_CHECKLIST.md`.
+- Status: BLOCKED for actual production deployment because Cloudflare project access and DNS/HTTPS configuration are external prerequisites. The repository is ready for that setup, with blockers documented in `LAUNCH_CHECKLIST.md`.
+
+### P1-H handoff
+
+- GitHub: `https://github.com/emfls/emfls-food`, branch `main`, latest pushed commit `8a18a3c`.
+- Cloudflare Pages deployment and custom-domain verification were not performed because no Cloudflare project access or connector is available in this session.
+- `food.emfls.com` did not resolve during the production check, so live HTTP, HTTPS, sitemap, robots, and canonical URLs remain unverified.
 
 ### Local production verification
 
