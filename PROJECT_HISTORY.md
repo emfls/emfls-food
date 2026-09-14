@@ -292,6 +292,39 @@
 - Status remains `BLOCKED`, not `LIVE`.
 - The production checklist intentionally remains incomplete. Local build and artifact checks documented earlier are not treated as production evidence.
 
+## 2026-09-15 — P1-H Cloudflare deployment and production verification
+
+### Cloudflare and GitHub
+
+- Confirmed GitHub App access to `emfls/emfls-food` (repository ID `1369403866`, default branch `main`).
+- Confirmed no existing `emfls-food` Pages project; other EMFLS projects were not modified.
+- Created Pages project `emfls-food` (project ID `415d55b6-647e-4765-991d-2f9d77e0ca91`) connected to `emfls/emfls-food`.
+- Production branch: `main`; build command: `npm run build`; output directory: `dist`; framework detected: Astro; no Functions used.
+- Production deployment `70e75954-95a3-4e10-8e52-60a65b07c6ca` completed with queued, initialize, clone, build, and deploy stages all successful.
+- Pages URL: `https://emfls-food.pages.dev/`.
+
+### Custom domain and DNS
+
+- Added `food.emfls.com` as the Pages custom domain.
+- Added only the scoped DNS record `food.emfls.com CNAME emfls-food.pages.dev`; no other subdomain records were changed.
+- Cloudflare Pages domain status became `active`; HTTPS certificate validation became active.
+
+### Production QA
+
+- Pages URL returned HTTP 200 with Cloudflare headers.
+- `https://food.emfls.com/` returned HTTP 200 over HTTPS after DNS propagation.
+- Route smoke test passed: home, categories, two Recipes, two Knowledge pages, Cooking Converter, About, Privacy, Contact, robots, and sitemap returned 200.
+- An arbitrary nonexistent URL returned 404.
+- Browser QA passed on production: Recipe Scaling changed 2 servings to 4 servings; Cooking Converter returned `400 ml` for 2 cups, swap returned `0.07 큰술`, and invalid `-1` input displayed `—`.
+- Homepage navigation and related-content links were visible and resolved to the expected trailing-slash URLs.
+- Production HTML contained canonical URLs, title, description, and Open Graph metadata using `https://food.emfls.com/`; the pages.dev homepage also emitted the food.emfls.com canonical.
+- `/robots.txt` referenced `https://food.emfls.com/sitemap-index.xml`; `/sitemap-index.xml` referenced the food.emfls.com sitemap.
+
+### Status
+
+- P1-H status is now complete and production status is `LIVE`.
+- Remaining external work is limited to Search Console, a real operating contact channel, GA4, AdSense, and dependency security maintenance.
+
 ## 2026-09-14 — P1-C Recipe Scaling
 
 ### 구현 내용

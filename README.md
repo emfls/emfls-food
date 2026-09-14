@@ -23,10 +23,10 @@ Production build는 `npm run build`, 타입과 Astro 구성 확인은 `npm run c
 - Domain: `https://food.emfls.com`
 - Build command: `npm run build`
 - Output directory: `dist`
-- Deployment target: Cloudflare Pages static hosting
+- Deployment target: Cloudflare Pages static hosting (`emfls-food.pages.dev` plus `food.emfls.com`)
 - URL policy: trailing slash (`trailingSlash: 'always'`)
 
-주요 route는 `/`, `/categories/`, `/recipes/<slug>/`, `/knowledge/<slug>/`, `/tools/cooking-converter/`, `/about/`, `/privacy/`, `/contact/`입니다. 현재 GA4, AdSense, 실제 문의 채널, Cloudflare 연결은 아직 설정하지 않았습니다.
+주요 route는 `/`, `/categories/`, `/recipes/<slug>/`, `/knowledge/<slug>/`, `/tools/cooking-converter/`, `/about/`, `/privacy/`, `/contact/`입니다. Cloudflare Pages production deployment와 `food.emfls.com` custom domain은 연결되어 있습니다. GA4, AdSense, 실제 문의 채널은 아직 설정하지 않았습니다.
 
 Recipe Scaling과 Cooking Converter는 정적 페이지에 최소 client-side JavaScript로 동작하며, 콘텐츠는 `src/content/recipes`와 `src/content/knowledge`의 Astro Content Collections로 관리합니다.
 
