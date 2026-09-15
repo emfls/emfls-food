@@ -360,7 +360,9 @@
 - `npm run build` — success, 18 static pages generated.
 - Build audit found `G-61JHVHR4FB` on all 18 generated HTML pages and one `gtag.js` loader per page.
 - Canonical URLs for homepage, Recipe, Knowledge, and Cooking Converter remained `https://food.emfls.com/...`.
-- No production deployment or live GA4 Realtime/DebugView verification has been claimed yet; the commit must be deployed before that final check.
+- Cloudflare production deployment `491e4680` completed successfully from commit `8c4d6d3` with the `food.emfls.com` alias.
+- Live HTML checks passed on the homepage, Recipe, Knowledge, and Cooking Converter: HTTP 200, one `gtag.js` loader, the expected Measurement ID, and unchanged food.emfls.com canonical URLs.
+- The Google `gtag.js` endpoint returned HTTP 200. GA4 Realtime/DebugView was not accessed, so event receipt is not claimed.
 
 ## 2026-09-14 — P1-C Recipe Scaling
 

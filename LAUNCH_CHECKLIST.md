@@ -71,7 +71,7 @@
 - Added one site-wide `gtag.js` loader and configuration block in `src/layouts/BaseLayout.astro`.
 - Updated `src/pages/privacy.astro` to describe Google Analytics usage; AdSense remains disconnected.
 - Local build output contains the GA4 ID and exactly one loader per generated HTML page. No GTM container or analytics dependency was added.
-- Production deployment and live collection verification remain pending until the pushed commit is deployed.
+- Production deployment `491e4680` completed successfully from commit `8c4d6d3`; live HTML checks passed. GA4 Realtime/DebugView was not accessed, so event receipt is not claimed.
 
 ## 2026-09-15 Search Console setup
 
