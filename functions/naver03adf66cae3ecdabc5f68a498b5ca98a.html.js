@@ -1,4 +1,4 @@
-const body = 'naver-site-verification: naver6dde13e69fe8ec25cd17e085c65c2124.html';
+const body = 'naver-site-verification: naver03adf66cae3ecdabc5f68a498b5ca98a.html';
 
 export function onRequest({ request }) {
   if (request.method !== 'GET' && request.method !== 'HEAD') {
