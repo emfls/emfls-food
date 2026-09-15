@@ -24,7 +24,7 @@
 ## Search
 
 - [x] Confirm `food.emfls.com` is covered by the verified `sc-domain:emfls.com` Domain Property
-- [ ] Submit `https://food.emfls.com/sitemap.xml`
+- [x] Submit `https://food.emfls.com/sitemap.xml` — Search Console reported success with 17 discovered URLs
 - [ ] Inspect representative Recipe, Knowledge, About, and tool URLs
 
 ## Analytics — external setup required
@@ -78,6 +78,8 @@
 - Current production sitemap target is `https://food.emfls.com/sitemap.xml`.
 - The previous `sitemap-index.xml` submission is retained as historical Search Console context; it is not the current operating sitemap.
 - Local build generated only `dist/sitemap.xml`; `sitemap-index.xml` and `sitemap-0.xml` were not generated.
+- The old food `sitemap-index.xml` submission was removed from Search Console after the new sitemap was accepted.
+- The old URL may still return a stale Cloudflare-cached 200 until cache expiry or an authorized purge; it is absent from the current build and deployment.
 
 ## 2026-09-15 Search Console setup
 

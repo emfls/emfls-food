@@ -387,6 +387,12 @@
 - The earlier `sitemap-index.xml` submission remains in history and must not be rewritten as if it never happened.
 - After this deployment, submit `https://food.emfls.com/sitemap.xml` in the existing `sc-domain:emfls.com` property and retire the old submission if the interface allows it.
 
+### Search Console completion
+
+- Submitted `https://food.emfls.com/sitemap.xml` in the verified `sc-domain:emfls.com` property; Search Console reported success and 17 discovered URLs.
+- Removed the old `https://food.emfls.com/sitemap-index.xml` submission from the food property. Unrelated properties and historical records were not changed.
+- The old URL still returned a stale Cloudflare-cached 200 during final verification; an authorized purge attempt failed with a Cloudflare authentication error. It is absent from the current build and deployment, so cache expiry or an authorized purge remains an external cleanup item.
+
 ## 2026-09-14 — P1-C Recipe Scaling
 
 ### 구현 내용
