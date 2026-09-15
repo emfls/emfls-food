@@ -475,6 +475,14 @@
 - Local preview visual QA passed for the homepage at desktop and 390px mobile, the egg fried rice Recipe detail at 390px mobile, and Cooking Converter at 390px mobile.
 - The current production site was not modified during this local QA pass; deployment verification remains after commit/push.
 
+### Production verification
+
+- Commit `800bcfc` was pushed to `main` and the Cloudflare Pages production output served the new image assets.
+- `https://food.emfls.com/` was reviewed in the browser at 390px; the new editorial imagery rendered correctly on the live homepage.
+- Production smoke checks returned 200 for the homepage, Categories, two Recipe pages, two Knowledge pages, Cooking Converter, About, Privacy, Contact, Editorial Policy, `sitemap.xml`, and `robots.txt`; an unknown URL returned 404.
+- Production asset checks returned 200 for all four generated JPEGs. The Recipe detail exposed the expected image alt text and Recipe Scaling controls in the accessibility tree.
+- Production canonical and GA4 regression checks remained on the Food domain; the homepage contained one `G-61JHVHR4FB` reference.
+
 ### Not changed
 
 - No new routes, content collections, Recipe Scaling logic, Cooking Converter logic, GA4 configuration, AdSense, or other EMFLS project was changed.
