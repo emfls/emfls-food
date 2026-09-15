@@ -26,11 +26,12 @@
 - [x] Replace the historical Search Console sitemap submission with `https://food.emfls.com/sitemap.xml`; old food submission removed
 - [x] GA4 connected with the real `G-61JHVHR4FB` Measurement ID and Privacy updated
 - [x] 콘텐츠 간 Recipe ↔ Knowledge 관련 링크 보강
+- [x] Whole-site Visual QA and editorial design polish: responsive render review, selective original imagery, card/detail image treatment, and feature regression review
 
 ## P2 — 미완료
 
 - [ ] 콘텐츠 범위 확장과 검색 의도별 SEO 개선
-- [ ] 이미지/사진 운영 체계
+- [x] 이미지/사진 운영 체계 — selective original assets applied; expand only when new content needs imagery
 - [ ] 성과 측정과 수익화 검토
 
 ## Network Baseline v1 — 이번 작업

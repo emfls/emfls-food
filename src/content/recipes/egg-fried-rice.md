@@ -4,6 +4,9 @@ description: 계란을 먼저 익혀 밥알을 감싸고 대파 향을 더하는
 category: 밥
 tags: [계란, 볶음밥, 빠른요리]
 updatedAt: 2026-09-14
+image:
+  src: /images/recipes/egg-fried-rice.jpg
+  alt: 대파를 올린 계란볶음밥 한 그릇
 servings: 2
 prepTime: 5분
 cookTime: 8분

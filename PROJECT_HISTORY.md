@@ -453,3 +453,28 @@
 - Recipe scaling helper direct checks — 2→1, 2→4, 1큰술→1/2큰술·1 1/2큰술, 1/2→1, 비수량 문자열 유지 확인
 - `npm run check` — 0 errors, 0 warnings, 0 hints
 - `npm run build` — 성공, 17개 정적 페이지 생성
+## 2026-09-15 — Whole-site visual QA and design polish
+
+### Visual review
+
+- Rendered and reviewed the local production preview at desktop and 390px mobile widths.
+- Checked the homepage, Recipe detail, Cooking Converter, card grid, footer, navigation, spacing, typography, image cropping, and mobile stacking against the Food editorial direction.
+- Existing Recipe Scaling controls, focus states, semantic landmarks, and reduced-motion rules were preserved; no duplicate feature implementation was introduced.
+
+### Changes
+
+- Added four original image assets generated for this project: three recipe images and one leafy-greens storage image under `public/images/`.
+- Connected image metadata to the corresponding Recipe/Knowledge collections so cards and detail pages use the existing optional image architecture.
+- Added the available recipe image URL to Recipe JSON-LD only when a real content image exists.
+- Polished image-bearing GuideCard spacing so photography reaches the card edges while text keeps the existing editorial padding.
+
+### Verification
+
+- `npm run check` — 0 errors, 0 warnings, 0 hints.
+- `npm run build` — success; 19 static routes generated.
+- Local preview visual QA passed for the homepage at desktop and 390px mobile, the egg fried rice Recipe detail at 390px mobile, and Cooking Converter at 390px mobile.
+- The current production site was not modified during this local QA pass; deployment verification remains after commit/push.
+
+### Not changed
+
+- No new routes, content collections, Recipe Scaling logic, Cooking Converter logic, GA4 configuration, AdSense, or other EMFLS project was changed.

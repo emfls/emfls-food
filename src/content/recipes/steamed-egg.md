@@ -4,6 +4,9 @@ description: 계란물을 고르게 풀고 약한 불로 천천히 익혀 구멍
 category: 조리법
 tags: [계란, 찜, 반찬]
 updatedAt: 2026-09-14
+image:
+  src: /images/recipes/steamed-egg.jpg
+  alt: 부드럽게 익은 계란찜 한 그릇
 servings: 2
 prepTime: 5분
 cookTime: 12분

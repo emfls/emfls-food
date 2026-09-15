@@ -4,6 +4,9 @@ description: 두부 표면의 물기를 제거하고 충분히 달군 팬에서 
 category: 식재료
 tags: [두부, 부침, 반찬]
 updatedAt: 2026-09-14
+image:
+  src: /images/recipes/pan-fried-tofu.jpg
+  alt: 노릇하게 부친 두부와 간장 소스
 servings: 2
 prepTime: 10분
 cookTime: 10분

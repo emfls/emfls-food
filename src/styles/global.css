@@ -9,3 +9,4 @@
 @media (max-width:720px){.article-columns{grid-template-columns:1fr}.related-section .guide-grid{grid-template-columns:1fr}}
 @media (max-width:720px){.tool-shell{padding-top:3rem}.converter-fields{grid-template-columns:1fr 1fr}.swap-button{grid-column:1 / -1;justify-self:center;transform:rotate(90deg)}}
 .skip-link{position:absolute;left:1rem;top:-4rem;z-index:10;background:var(--ink);color:var(--paper);padding:.6rem 1rem}.skip-link:focus{top:1rem}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.guide-card:has(.content-image){padding:0 1.5rem 1.5rem}.guide-card:has(.content-image) .content-image{margin-left:-1.5rem;margin-right:-1.5rem;width:calc(100% + 3rem)}

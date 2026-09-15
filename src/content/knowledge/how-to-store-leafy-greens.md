@@ -4,6 +4,9 @@ description: 잎채소의 수분을 지키면서도 과한 습기를 줄이는 �
 category: 보관법
 tags: [잎채소, 냉장보관, 식재료관리]
 updatedAt: 2026-09-14
+image:
+  src: /images/knowledge/leafy-greens-storage.jpg
+  alt: 키친타월과 용기에 담아 보관하는 잎채소
 topic: storage
 summary: 잎채소는 씻은 뒤 물기를 충분히 제거하고, 키친타월로 남은 습기를 관리해야 오래 아삭하게 보관할 수 있습니다.
 whenUseful: 장을 본 잎채소를 며칠에 걸쳐 나누어 먹거나, 샐러드용 채소를 미리 손질해 두고 싶을 때 유용합니다.
