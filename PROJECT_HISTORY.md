@@ -125,7 +125,10 @@
 ### Sitemap and verification
 
 - 기존 단일 sitemap.xml endpoint와 trailingSlash: always를 유지하고 Editorial Policy route만 자동 sitemap 대상에 추가했다. sitemap은 18개 URL(Recipe 6, Knowledge 5, 정적 7)을 포함하며 404는 제외한다.
-- npm run check와 npm run build는 0 errors, 0 warnings, 0 hints로 통과했고 19개 정적 페이지가 생성됐다. Production smoke QA와 Cloudflare deployment 결과는 배포 후 추가한다.
+- npm run check와 npm run build는 0 errors, 0 warnings, 0 hints로 통과했고 19개 정적 페이지가 생성됐다.
+- Cloudflare Pages production deployment `a245d1e6`가 commit `8e43aee`에서 build/deploy 성공했다. Project `emfls-food`, GitHub `emfls/emfls-food`, branch `main`, build `npm run build`, output `dist`, alias `food.emfls.com`을 확인했다.
+- Production smoke QA에서 `/`, `/editorial-policy/`, Recipe, Knowledge, Cooking Converter, `/sitemap.xml`, `/robots.txt`는 HTTP 200, 임의 존재하지 않는 URL은 404였다. CSS와 페이지 HTML, canonical domain, new Editorial Policy title, JSON-LD를 확인했다.
+- Production homepage와 Recipe에는 GA4 ID와 gtag loader가 각각 한 번 포함됐다. pages.dev HTML에는 직접 gtag.js src가 없고 `food.emfls.com` hostname guard만 있어 production-only 조건을 확인했다. GA4 Realtime/DebugView 수신은 확인하지 않았다.
 
 ### Not done
 
