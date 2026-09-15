@@ -325,6 +325,26 @@
 - P1-H status is now complete and production status is `LIVE`.
 - Remaining external work is limited to Search Console, a real operating contact channel, GA4, AdSense, and dependency security maintenance.
 
+## 2026-09-15 — Google Search Console initial indexing setup
+
+### Property and verification
+
+- Confirmed the existing verified Google Search Console Domain Property `sc-domain:emfls.com` is available to the signed-in account and covers the `food.emfls.com` subdomain.
+- Did not create a duplicate `food.emfls.com` URL-prefix property and did not add or change verification DNS/meta values.
+
+### Sitemap and URL inspection
+
+- Submitted `https://food.emfls.com/sitemap-index.xml` in the verified Domain Property.
+- Search Console reported the submission as successful. The current report shows 0 discovered pages while Google performs initial processing; this is not treated as full indexing.
+- Inspected the homepage and `https://food.emfls.com/recipes/egg-fried-rice/`.
+- The homepage was previously unknown to Google and the representative Recipe was reported as discovered but not currently indexed; both indexing requests were submitted and confirmed as added to Google's priority crawl queue.
+
+### Scope and remaining work
+
+- Production SEO files remain unchanged: robots, sitemap, canonical, HTTP, and trailing-slash checks were already passing on production.
+- No new content, features, verification token, GA4, AdSense, or Astro upgrade was added.
+- Google must still process the sitemap and crawl the requested URLs; indexing is not guaranteed immediately.
+
 ## 2026-09-14 — P1-C Recipe Scaling
 
 ### 구현 내용

@@ -23,8 +23,8 @@
 
 ## Search
 
-- [ ] Add `food.emfls.com` to Google Search Console
-- [ ] Submit `https://food.emfls.com/sitemap-index.xml`
+- [x] Confirm `food.emfls.com` is covered by the verified `sc-domain:emfls.com` Domain Property
+- [x] Submit `https://food.emfls.com/sitemap-index.xml`
 - [ ] Inspect representative Recipe, Knowledge, About, and tool URLs
 
 ## Analytics — external setup required
@@ -64,3 +64,12 @@
 - `emfls-food.pages.dev` returned HTTP 200 and `food.emfls.com` custom domain became active.
 - DNS CNAME is `food.emfls.com -> emfls-food.pages.dev`; HTTPS and Cloudflare response headers were verified.
 - Route, browser feature, and production SEO QA passed. See `PROJECT_HISTORY.md` for the exact test scope.
+
+## 2026-09-15 Search Console setup
+
+- Existing verified property: `sc-domain:emfls.com` (Domain Property), which covers `food.emfls.com`; no duplicate URL-prefix property or verification token was created.
+- Submitted `https://food.emfls.com/sitemap-index.xml` successfully.
+- Search Console currently reports the sitemap as successful, with 0 discovered pages so far; this is an initial processing state, not a claim that all pages are indexed.
+- URL Inspection checked `https://food.emfls.com/` and `https://food.emfls.com/recipes/egg-fried-rice/`.
+- Indexing requests were submitted for the homepage and the representative Recipe. Google reported both requests were added to the priority crawl queue.
+- No repository source, verification DNS record, verification meta, or feature code was changed.

@@ -22,6 +22,7 @@
 - [x] P1-F 이미지 운영 체계 구축
 - [x] P1-G AdSense / Production Launch Preparation
 - [x] P1-H Production Deployment — Cloudflare Pages production deployment and `food.emfls.com` custom domain verified
+- [x] Google Search Console property coverage confirmed and `food.emfls.com` sitemap submitted
 - [x] 콘텐츠 간 Recipe ↔ Knowledge 관련 링크 보강
 
 ## P2 — 미완료
