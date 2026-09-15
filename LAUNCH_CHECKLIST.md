@@ -24,7 +24,7 @@
 ## Search
 
 - [x] Confirm `food.emfls.com` is covered by the verified `sc-domain:emfls.com` Domain Property
-- [x] Submit `https://food.emfls.com/sitemap-index.xml`
+- [ ] Submit `https://food.emfls.com/sitemap.xml`
 - [ ] Inspect representative Recipe, Knowledge, About, and tool URLs
 
 ## Analytics — external setup required
@@ -72,6 +72,12 @@
 - Updated `src/pages/privacy.astro` to describe Google Analytics usage; AdSense remains disconnected.
 - Local build output contains the GA4 ID and exactly one loader per generated HTML page. No GTM container or analytics dependency was added.
 - Production deployment `491e4680` completed successfully from commit `8c4d6d3`; live HTML checks passed. GA4 Realtime/DebugView was not accessed, so event receipt is not claimed.
+
+## 2026-09-15 sitemap consolidation
+
+- Current production sitemap target is `https://food.emfls.com/sitemap.xml`.
+- The previous `sitemap-index.xml` submission is retained as historical Search Console context; it is not the current operating sitemap.
+- Local build generated only `dist/sitemap.xml`; `sitemap-index.xml` and `sitemap-0.xml` were not generated.
 
 ## 2026-09-15 Search Console setup
 

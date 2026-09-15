@@ -364,6 +364,29 @@
 - Live HTML checks passed on the homepage, Recipe, Knowledge, and Cooking Converter: HTTP 200, one `gtag.js` loader, the expected Measurement ID, and unchanged food.emfls.com canonical URLs.
 - The Google `gtag.js` endpoint returned HTTP 200. GA4 Realtime/DebugView was not accessed, so event receipt is not claimed.
 
+## 2026-09-15 — Sitemap consolidation
+
+### Implementation
+
+- Removed the `@astrojs/sitemap` integration and dependency.
+- Added `src/pages/sitemap.xml.ts` as a static Astro endpoint that reads both Content Collections with `getCollection`.
+- The endpoint includes the six shared static routes, all Recipe entries, and all Knowledge entries. New collection entries will be included automatically at build time.
+- The endpoint emits standard XML with `loc` and trusted collection `updatedAt` values as `lastmod`; no arbitrary priority or change frequency values were added.
+- Updated `public/robots.txt` to reference `https://food.emfls.com/sitemap.xml`.
+
+### Local verification
+
+- `npm run check` — 0 errors, 0 warnings, 0 hints.
+- `npm run build` — success, 18 static routes generated.
+- `dist/sitemap.xml` contains 17 URLs: 6 Recipes, 5 Knowledge pages, and 6 shared static routes.
+- `dist/sitemap-index.xml` and `dist/sitemap-0.xml` are absent; 404 is not included.
+- All sitemap URLs use `https://food.emfls.com/` and trailing slashes.
+
+### Search Console handoff
+
+- The earlier `sitemap-index.xml` submission remains in history and must not be rewritten as if it never happened.
+- After this deployment, submit `https://food.emfls.com/sitemap.xml` in the existing `sc-domain:emfls.com` property and retire the old submission if the interface allows it.
+
 ## 2026-09-14 — P1-C Recipe Scaling
 
 ### 구현 내용

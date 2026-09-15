@@ -23,6 +23,7 @@
 - [x] P1-G AdSense / Production Launch Preparation
 - [x] P1-H Production Deployment — Cloudflare Pages production deployment and `food.emfls.com` custom domain verified
 - [x] Google Search Console property coverage confirmed and `food.emfls.com` sitemap submitted
+- [ ] Replace the historical Search Console sitemap submission with `https://food.emfls.com/sitemap.xml`
 - [x] GA4 connected with the real `G-61JHVHR4FB` Measurement ID and Privacy updated
 - [x] 콘텐츠 간 Recipe ↔ Knowledge 관련 링크 보강
 

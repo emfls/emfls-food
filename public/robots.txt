@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://food.emfls.com/sitemap-index.xml
+Sitemap: https://food.emfls.com/sitemap.xml
