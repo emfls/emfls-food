@@ -29,9 +29,9 @@
 
 ## Analytics — external setup required
 
-- [ ] Create a GA4 property and obtain the real Measurement ID
-- [ ] Add the ID through one documented site-wide configuration point
-- [ ] Update `Privacy` before enabling analytics
+- [x] Create a GA4 property and obtain the real Measurement ID
+- [x] Add the ID through one documented site-wide configuration point
+- [x] Update `Privacy` before enabling analytics
 - [ ] Verify consent and privacy requirements for the target audience and jurisdiction
 
 ## AdSense — external setup required
@@ -64,6 +64,14 @@
 - `emfls-food.pages.dev` returned HTTP 200 and `food.emfls.com` custom domain became active.
 - DNS CNAME is `food.emfls.com -> emfls-food.pages.dev`; HTTPS and Cloudflare response headers were verified.
 - Route, browser feature, and production SEO QA passed. See `PROJECT_HISTORY.md` for the exact test scope.
+
+## 2026-09-15 GA4 connection
+
+- Measurement ID: `G-61JHVHR4FB`
+- Added one site-wide `gtag.js` loader and configuration block in `src/layouts/BaseLayout.astro`.
+- Updated `src/pages/privacy.astro` to describe Google Analytics usage; AdSense remains disconnected.
+- Local build output contains the GA4 ID and exactly one loader per generated HTML page. No GTM container or analytics dependency was added.
+- Production deployment and live collection verification remain pending until the pushed commit is deployed.
 
 ## 2026-09-15 Search Console setup
 

@@ -345,6 +345,23 @@
 - No new content, features, verification token, GA4, AdSense, or Astro upgrade was added.
 - Google must still process the sitemap and crawl the requested URLs; indexing is not guaranteed immediately.
 
+## 2026-09-15 — GA4 production analytics connection
+
+### Implementation
+
+- Confirmed the repository had no existing `gtag`, Google Tag Manager, GA4 script, or Measurement ID before the change.
+- Added the real `emfls-food` Measurement ID `G-61JHVHR4FB` once in `src/layouts/BaseLayout.astro`.
+- Used the standard Google `gtag.js` loader from `www.googletagmanager.com` plus one `gtag('config', ...)` call. No analytics dependency, GTM container, or page-level duplicate was added.
+- Updated `src/pages/privacy.astro` to describe Google Analytics measurement of site usage and possible Google processing. AdSense remains disconnected and is not described as active.
+
+### Verification
+
+- `npm run check` — 0 errors, 0 warnings, 0 hints.
+- `npm run build` — success, 18 static pages generated.
+- Build audit found `G-61JHVHR4FB` on all 18 generated HTML pages and one `gtag.js` loader per page.
+- Canonical URLs for homepage, Recipe, Knowledge, and Cooking Converter remained `https://food.emfls.com/...`.
+- No production deployment or live GA4 Realtime/DebugView verification has been claimed yet; the commit must be deployed before that final check.
+
 ## 2026-09-14 — P1-C Recipe Scaling
 
 ### 구현 내용

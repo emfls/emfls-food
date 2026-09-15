@@ -5,6 +5,7 @@ import '../styles/global.css';
 interface Props { title: string; description: string; canonical?: string; type?: string; image?: { src: string; alt: string }; }
 const { title, description, canonical = Astro.url.href, type = 'website', image } = Astro.props;
 const imageUrl = image ? new URL(image.src, Astro.site ?? Astro.url).href : undefined;
+const GA_MEASUREMENT_ID = 'G-61JHVHR4FB';
 ---
 <!doctype html>
 <html lang="ko">
@@ -17,6 +18,13 @@ const imageUrl = image ? new URL(image.src, Astro.site ?? Astro.url).href : unde
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content={type} /><meta property="og:title" content={title} />
     <meta property="og:description" content={description} /><meta property="og:url" content={canonical} />{imageUrl && <meta property="og:image" content={imageUrl} />}{image?.alt && <meta property="og:image:alt" content={image.alt} />}
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+    <script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID);
+    </script>
   </head>
   <body><Header /><main id="main-content"><slot /></main><Footer /></body>
 </html>
