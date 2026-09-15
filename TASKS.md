@@ -32,3 +32,13 @@
 - [ ] 콘텐츠 범위 확장과 검색 의도별 SEO 개선
 - [ ] 이미지/사진 운영 체계
 - [ ] 성과 측정과 수익화 검토
+
+## Network Baseline v1 — 이번 작업
+
+- [x] Food Editorial Policy 페이지와 CONTENT_POLICY.md 추가
+- [x] 공통 metadata contract, production-only GA4 조건, Recipe/WebSite JSON-LD 보강
+- [x] skip link, focus-visible, reduced-motion 접근성 baseline 보강
+- [x] sitemap.xml, trailing slash, robots.txt 및 기존 Recipe Scaling/Cooking Converter 회귀 확인
+- [ ] GA4 Realtime/DebugView 실제 수신 확인
+- [ ] 실제 운영 문의 채널 확정
+- [ ] AdSense publisher 승인 및 별도 연결 검토

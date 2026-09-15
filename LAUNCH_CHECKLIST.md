@@ -25,6 +25,7 @@
 
 - [x] Confirm `food.emfls.com` is covered by the verified `sc-domain:emfls.com` Domain Property
 - [x] Submit `https://food.emfls.com/sitemap.xml` — Search Console reported success with 17 discovered URLs
+- [x] Confirm the current sitemap includes the Editorial Policy route and remains a single XML urlset
 - [ ] Inspect representative Recipe, Knowledge, About, and tool URLs
 
 ## Analytics — external setup required

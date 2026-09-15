@@ -2,10 +2,11 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-interface Props { title: string; description: string; canonical?: string; type?: string; image?: { src: string; alt: string }; }
-const { title, description, canonical = Astro.url.href, type = 'website', image } = Astro.props;
+interface Props { title: string; description: string; canonical?: string; noindex?: boolean; type?: string; image?: { src: string; alt: string }; ogTitle?: string; ogDescription?: string; twitterCard?: 'summary' | 'summary_large_image'; jsonLd?: Record<string, unknown> | Record<string, unknown>[]; }
+const { title, description, canonical = Astro.url.href, noindex = false, type = 'website', image, ogTitle = title, ogDescription = description, twitterCard = image ? 'summary_large_image' : 'summary', jsonLd } = Astro.props;
 const imageUrl = image ? new URL(image.src, Astro.site ?? Astro.url).href : undefined;
 const GA_MEASUREMENT_ID = 'G-61JHVHR4FB';
+const structuredData = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 <!doctype html>
 <html lang="ko">
@@ -13,18 +14,27 @@ const GA_MEASUREMENT_ID = 'G-61JHVHR4FB';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#fbf8f1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
-    <meta property="og:type" content={type} /><meta property="og:title" content={title} />
-    <meta property="og:description" content={description} /><meta property="og:url" content={canonical} />{imageUrl && <meta property="og:image" content={imageUrl} />}{image?.alt && <meta property="og:image:alt" content={image.alt} />}
-    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+    <meta property="og:type" content={type} /><meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} /><meta property="og:url" content={canonical} />{imageUrl && <meta property="og:image" content={imageUrl} />}{image?.alt && <meta property="og:image:alt" content={image.alt} />}
+    <meta name="twitter:card" content={twitterCard} /><meta name="twitter:title" content={ogTitle} /><meta name="twitter:description" content={ogDescription} />{imageUrl && <meta name="twitter:image" content={imageUrl} />}
+    {structuredData.map((data) => <script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />)}
     <script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){window.dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', GA_MEASUREMENT_ID);
+      if (window.location.hostname === 'food.emfls.com') {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+        document.head.appendChild(script);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function gtag(){ window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', GA_MEASUREMENT_ID);
+      }
     </script>
   </head>
-  <body><Header /><main id="main-content"><slot /></main><Footer /></body>
+  <body><a class="skip-link" href="#main-content">본문으로 건너뛰기</a><Header /><main id="main-content"><slot /></main><Footer /></body>
 </html>

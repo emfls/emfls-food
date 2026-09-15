@@ -54,3 +54,7 @@ alt는 파일명이나 “이미지”라는 단어를 반복하지 않고 사�
 ## Forbidden patterns
 
 과도한 그림자, gradient, glassmorphism, 자동 재생, 장식적인 애니메이션, SaaS 대시보드식 UI, 과밀한 카드 그리드, 무의미한 임시 문구를 사용하지 않는다.
+
+## Infrastructure baseline
+
+공통 infrastructure는 Food의 시각 언어와 분리한다. 공통 layout은 canonical, Open Graph, Twitter metadata, theme-color, optional JSON-LD와 production-only analytics를 제공하지만 warm paper, terracotta, serif editorial typography, recipe-book layout은 유지한다. skip link, visible focus, keyboard controls, reduced-motion 지원은 콘텐츠 경험을 바꾸지 않는 범위에서 적용한다.

@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 import type { APIRoute } from 'astro';
 
 const siteUrl = 'https://food.emfls.com';
-const staticPaths = ['/', '/categories/', '/tools/cooking-converter/', '/about/', '/privacy/', '/contact/'];
+const staticPaths = ['/', '/categories/', '/tools/cooking-converter/', '/about/', '/editorial-policy/', '/privacy/', '/contact/'];
 type SitemapUrl = { path: string; updatedAt?: Date };
 
 const escapeXml = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');

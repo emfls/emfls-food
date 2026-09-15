@@ -3,10 +3,10 @@ import BaseLayout from './BaseLayout.astro';
 import RecipeFacts from '../components/RecipeFacts.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ContentImage from '../components/ContentImage.astro';
-interface Props { title: string; description: string; category: string; updatedAt: Date; collection: string; image?: { src: string; alt: string }; recipe?: { servings: number; prepTime: string; cookTime: string; totalTime: string }; }
-const { title, description, category, updatedAt, collection, image, recipe } = Astro.props;
+interface Props { title: string; description: string; category: string; updatedAt: Date; collection: string; image?: { src: string; alt: string }; recipe?: { servings: number; prepTime: string; cookTime: string; totalTime: string }; jsonLd?: Record<string, unknown> | Record<string, unknown>[]; }
+const { title, description, category, updatedAt, collection, image, recipe, jsonLd } = Astro.props;
 ---
-<BaseLayout title={`${title} | emfls food`} description={description} type="article" image={image}>
+<BaseLayout title={`${title} | emfls food`} description={description} type="article" image={image} jsonLd={jsonLd}>
   <article class="article-shell"><Breadcrumbs category={category} title={title} collection={collection} />
     <header class="article-header"><p class="eyebrow">{category}</p><h1>{title}</h1><p class="lede">{description}</p>{image && <ContentImage image={image} variant="hero" />}<p class="article-date">마지막 정리 · {updatedAt.toLocaleDateString('ko-KR')}</p>{recipe && <RecipeFacts {...recipe} />}</header>
     <div class="article-body"><slot /></div>

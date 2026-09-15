@@ -107,6 +107,31 @@
 - `npm run check` — 0 errors, 0 warnings, 0 hints
 - `npm run build` — 성공, 17개 정적 페이지 생성
 
+## 2026-09-15 — EMFLS Network Baseline v1
+
+### Scope and preservation
+
+- emfls-food의 독립적인 Modern Editorial Recipe Book 디자인, Content Collection 분리, Recipe Scaling, Cooking Converter를 유지했다.
+- 다른 EMFLS 프로젝트의 visual design, content template, analytics ID, sitemap, Cloudflare 설정은 사용하지 않았다.
+
+### Infrastructure and trust
+
+- BaseLayout에 canonical, noindex, Open Graph, Twitter card, theme-color, favicon, optional JSON-LD metadata contract를 보강했다.
+- GA4 Measurement ID G-61JHVHR4FB는 hostname이 food.emfls.com일 때만 런타임 로드하도록 변경했다. localhost, preview, pages.dev, workers.dev에서는 gtag.js를 요청하지 않는다.
+- Food Editorial Policy 공개 페이지와 내부 CONTENT_POLICY.md를 추가하고 Footer/About에서 연결했다.
+- Homepage WebSite JSON-LD와 Recipe collection의 실제 필드만 사용하는 Recipe JSON-LD를 추가했다. rating, review, price, calories, nutrition, 임의 author 데이터는 추가하지 않았다.
+- skip link, focus-visible, reduced-motion 지원과 명시적 footer navigation을 보강했다. 기존 native controls, labels, aria-live, aria-pressed, 이미지 alt 구조는 유지했다.
+
+### Sitemap and verification
+
+- 기존 단일 sitemap.xml endpoint와 trailingSlash: always를 유지하고 Editorial Policy route만 자동 sitemap 대상에 추가했다. sitemap은 18개 URL(Recipe 6, Knowledge 5, 정적 7)을 포함하며 404는 제외한다.
+- npm run check와 npm run build는 0 errors, 0 warnings, 0 hints로 통과했고 19개 정적 페이지가 생성됐다. Production smoke QA와 Cloudflare deployment 결과는 배포 후 추가한다.
+
+### Not done
+
+- AdSense, 새 이미지, 새 콘텐츠, 검색, CMS, API, DB, Astro major upgrade는 추가하지 않았다.
+- GA4 Realtime/DebugView 수신 확인, 실제 운영 문의 채널 확정, AdSense 연결은 외부/후속 작업이다.
+
 ## 2026-09-14 — P1-D Cooking Converter
 
 ### 구현 내용
