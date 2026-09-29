@@ -486,3 +486,33 @@
 ### Not changed
 
 - No new routes, content collections, Recipe Scaling logic, Cooking Converter logic, GA4 configuration, AdSense, or other EMFLS project was changed.
+
+## 2026-09-29 — Foundation/Search Launch and IndexNow key bootstrap
+
+### Fresh baseline
+
+- Repo `/Users/whitesmile/Documents/emfls-food` started clean at `main` / `43264b55c986b83e81b7c649aa99545dfa0228a6`, equal to GitHub `origin/main` and the latest commit returned by GitHub.
+- Registry's prior note referenced local commit `a66e149df2a8c4d09d9f97c472aba3d5c86d325e`; that object was absent from this checkout and its Git object database. The current main checkout is the verifiable source; do not assume the earlier local patch is present.
+- Cloudflare Pages project `emfls-food` is linked to `emfls/emfls-food`, builds `npm run build` to `dist`, and has active domain `food.emfls.com`. Latest Production deployment `0a81ae23` succeeded from the current main commit.
+
+### Production and search evidence
+
+- Read-only GETs: home 200; `robots.txt` 200 with custom-domain sitemap; `sitemap.xml` 200 XML with 18 canonical `food.emfls.com` URLs; unknown path 404.
+- Exact Repo Naver verifier `https://food.emfls.com/naver03adf66cae3ecdabc5f68a498b5ca98a.html` returns 200 with the expected file text and no redirect.
+- Registry reports Google Search `SET` / Google Sitemap `SUBMITTED`, Naver Search/Sitemap `NOT_SET`, Daum Search/Sitemap `NOT_SET`, and IndexNow `NOT_SET`. The last saved GSC result reports 17 discovered URLs; current sitemap exposes 18, so console freshness needs owner recheck.
+- Daum's public registration lookup returned “미등록 사이트”. No account/login/application, personal details, or privacy consent were submitted. Its published flow describes applicant information and review; the official pages checked do not document sitemap submission.
+
+### IndexNow change and verification
+
+- Added `public/9c1a095d009a47f9fc5815414822ddb2.txt`, a randomly generated 32-character lowercase-hex root key whose UTF-8 content matches its filename.
+- Added `tests/indexnow-key.test.mjs`; expected RED before the file was created, then PASS 1/1. It guards the root key filename/content contract.
+- `npm run check` — PASS, 28 files, 0 errors / 0 warnings / 0 hints.
+- `npm run build` — PASS, 19 Astro pages. Built-output audit confirms the key was copied byte-for-byte; robots points at the canonical sitemap; sitemap has 18 canonical trailing-slash URLs; home and Trust routes contain expected canonical/metadata; `/404.html` exists.
+- Astro's local preview started, but the connected browser blocked the loopback URL (`ERR_BLOCKED_BY_CLIENT`). No local-browser screenshot/visual PASS is claimed; the task-created blank tab was closed and preview server stopped. Cloudflare Preview browser QA remains pending.
+- The key exists only on feature branch `codex/site7-indexnow`. No Production change or IndexNow POST was made; the production host cannot prove the key until the branch is reviewed and deployed.
+
+### Next
+
+- Commit and push only `codex/site7-indexnow`; verify Cloudflare Preview's key route and public foundation endpoints in the browser; request a PR if the GitHub integration permits.
+- After the key is served by `food.emfls.com`, POST the current sitemap URL list once to the official IndexNow endpoint and record its exact response; HTTP 200 is receipt only.
+- Naver console registration/sitemap, current Search Console sitemap recheck, and Daum registration need owner access/action; preserve these statuses as incomplete until confirmed.

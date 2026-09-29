@@ -90,3 +90,16 @@
 - URL Inspection checked `https://food.emfls.com/` and `https://food.emfls.com/recipes/egg-fried-rice/`.
 - Indexing requests were submitted for the homepage and the representative Recipe. Google reported both requests were added to the priority crawl queue.
 - No repository source, verification DNS record, verification meta, or feature code was changed.
+
+## 2026-09-29 Foundation/Search Launch checkpoint
+
+- Current Repo main/GitHub main: `43264b55c986b83e81b7c649aa99545dfa0228a6`; feature branch: `codex/site7-indexnow`.
+- Cloudflare Pages project `emfls-food` is connected to `emfls/emfls-food`, builds `npm run build` to `dist`, and serves active custom domain `food.emfls.com`. Current Production deployment is `0a81ae23` from the same main commit.
+- Production GETs confirmed home, `robots.txt`, `sitemap.xml`, and the exact Naver verifier `naver03adf66cae3ecdabc5f68a498b5ca98a.html` return 200; an unknown route returns 404. Current sitemap has 18 canonical Food-domain URLs.
+- Registry reports Google Search `SET` and Google Sitemap `SUBMITTED`; the last recorded Search Console report had 17 discovered URLs. Search Console was not opened this run; confirm the latest sitemap report against the current 18-URL sitemap when owner access is available.
+- Naver Search/Sitemap remain `NOT_SET` in the Registry. Production verifier file is accessible at the exact `.html` route; owner registration and sitemap submission remain external account actions.
+- Daum's official public lookup returned “미등록 사이트” for `food.emfls.com`. Its documented site-registration process requires applicant details and data-owner/privacy consent; no application was submitted. The official pages checked do not document sitemap submission.
+- An IndexNow root key file and regression test are on `codex/site7-indexnow` only. Production has not received the file and no IndexNow URLs have been submitted.
+- [ ] Publish the reviewed branch so the key file is available from `food.emfls.com`.
+- [ ] Submit the current 18 canonical sitemap URLs to `https://api.indexnow.org/indexnow`; record the HTTP response. A 200 means received, not indexed.
+- [ ] Owner: recheck/resubmit current `/sitemap.xml` in Search Console; complete Naver registration/sitemap submission; decide whether to provide applicant/consent details for Daum registration.
